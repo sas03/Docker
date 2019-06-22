@@ -1,0 +1,23 @@
+version: '2'
+
+services: 
+
+ mysql:
+   image: mysql
+   environment:
+    MYSQL_DATABASE: web_database
+    MYSQL_ROOT_PASSWORD: root
+   volumes:
+    - projet-web-data:/var/lib/mysql
+
+ php:
+   image: php
+   volumes:
+    - projet-web-source:/usr/share/nginx/html
+
+ nginx:
+   image: nginx
+   ports:
+    - 8080:80
+   volumes:
+    - projet-web-vhost:/etc/nginx/conf.d
