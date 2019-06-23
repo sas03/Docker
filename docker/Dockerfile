@@ -18,11 +18,13 @@ CMD ["mysql"]
 
 FROM php:7.3-fpm
 
+VOLUME /usr/share/nginx/html
+
 CMD ["php"]
 
 FROM nginx:1.15
 
-VOLUME /usr/share/nginx/html
+VOLUME /etc/nginx/conf.d
 
 EXPOSE 8080
 
